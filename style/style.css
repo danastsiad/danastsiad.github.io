@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1,
+label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.progress {
+  margin: 20px;
+}
+.progress-content {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 567px) {
+  .progress-content {
+    width: 350px;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (max-width: 567px) {
+  .progress-content {
+    flex-direction: column;
+    height: 350px;
+    justify-content: space-between;
+  }
+}
+.progress-container {
+  position: relative;
+  justify-content: center;
+  display: flex;
+}
+.progress-chart {
+  width: 140px;
+  height: 140px;
+  transform: rotate(-90deg);
+}
+.progress-chart .progress-background {
+  fill: none;
+  stroke: #EAF0F6;
+  stroke-width: 12;
+}
+.progress-chart .progress-bar {
+  fill: none;
+  stroke-width: 12;
+  stroke-dasharray: 376.9908;
+  stroke-dashoffset: 376.9908;
+  transition: stroke-dashoffset 1s ease;
+}
+.progress-chart.animated {
+  animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+.progress-chart.hidden {
+  display: none;
+}
+.progress .controls {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.progress .controls-options {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.progress .controls input[type=number] {
+  width: 38.41px;
+  height: 23.41px;
+  border-radius: 25px;
+  border: 1px solid #000;
+  outline: none;
+  text-align: center;
+}
+.progress .controls input[type=number]::-webkit-outer-spin-button, .progress .controls input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.progress .controls .switch {
+  display: inline-block;
+  width: 40px;
+  height: 25px;
+}
+.progress .controls .switch input {
+  display: none;
+}
+.progress .controls .switch .slider {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background-color: #DAE6EC;
+  border-radius: 25px;
+  height: 100%;
+  transition: background-color 0.2s;
+}
+.progress .controls .switch .slider:before {
+  content: "";
+  position: absolute;
+  height: 21px;
+  width: 21px;
+  background-color: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+.progress .controls .switch .slider.round {
+  border-radius: 25px;
+}
+.progress .controls .switch .slider.round:before {
+  border-radius: 50%;
+}
+.progress .controls .switch input:checked + .slider {
+  background-color: #005CFF;
+}
+.progress .controls .switch input:checked + .slider:before {
+  transform: translateX(15px);
+}/*# sourceMappingURL=style.css.map */

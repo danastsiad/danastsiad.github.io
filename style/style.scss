@@ -1,0 +1,163 @@
+$blue: #005CFF;
+$color-background-chart: #EAF0F6;
+$color-border: #000;
+$color-background-switch: #DAE6EC;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1,
+label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.progress {
+    margin: 20px;
+
+    &-content {
+        margin-top: 60px;
+        display: flex;
+        align-items: center;
+
+        @media screen and (min-width: 567px) {
+            width: 350px;
+            justify-content: space-between;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (max-width: 567px) {
+            flex-direction: column;
+            height: 350px;
+            justify-content: space-between;
+        }
+    }
+
+    &-container {
+        position: relative;
+        justify-content: center;
+        display: flex;
+    }
+
+    &-chart {
+        width: 140px;
+        height: 140px;
+        transform: rotate(-90deg);
+
+        .progress-background {
+            fill: none;
+            stroke: $color-background-chart;
+            stroke-width: 12;
+        }
+
+        .progress-bar {
+            fill: none;
+            stroke-width: 12;
+            stroke-dasharray: calc(2 * 3.14159 * 60);
+            stroke-dashoffset: calc(2 * 3.14159 * 60);
+            transition: stroke-dashoffset 1s ease;
+        }
+
+        &.animated {
+            animation: rotate 5s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(-90deg);
+            }
+
+            100% {
+                transform: rotate(270deg);
+            }
+        }
+
+        &.hidden {
+            display: none;
+        }
+    }
+
+    .controls {
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        &-options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        input[type="number"] {
+            width: 38.41px;
+            height: 23.41px;
+            border-radius: 25px;
+            border: 1px solid $color-border;
+            outline: none;
+            text-align: center;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        .switch {
+            display: inline-block;
+            width: 40px;
+            height: 25px;
+
+            input {
+                display: none;
+            }
+
+            .slider {
+                position: relative;
+                display: block;
+                cursor: pointer;
+                background-color: $color-background-switch;
+                border-radius: 25px;
+                height: 100%;
+                transition: background-color 0.2s;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 21px;
+                    width: 21px;
+                    background-color: white;
+                    top: 2px;
+                    left: 2px;
+                    transition: transform 0.2s;
+                }
+
+                &.round {
+                    border-radius: 25px;
+
+                    &:before {
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            input:checked+.slider {
+                background-color: $blue;
+
+                &:before {
+                    transform: translateX(15px);
+                }
+            }
+        }
+    }
+}
